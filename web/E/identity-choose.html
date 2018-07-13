@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>首页</title>
+    <link rel="stylesheet" href="css/phone_rem.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <script src="js/height.js"></script>
+    <script src="js/jQuery.1.8.2.min.js"></script>
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col12">
+            <div class="tc font0">
+                <div class="font38 mb90 mt112 font-b">请选择您的身份</div>
+                <div class="display-ib ht172 w172 radius-circle pos-r">
+                    <img src="icons/jz_tx.png" class="ht100p per100 coverImg" alt=""/>
+                    <img src="icons/checked.png" class="w44 ht44 pos-a bottom34 right0" alt=""/>
+                </div>
+                <div class="font30 mt24">我是家长</div>
+                <div class="display-ib ht172 w172 radius-circle pos-r mt90">
+                    <img src="icons/js_tx.png" class="ht100p per100 coverImg" alt=""/>
+                    <img src="icons/checked.png" class="w44 ht44 pos-a bottom34 right0 display-n" alt=""/>
+                </div>
+                <div class="font30 mt24">我是教师</div>
+                <button class="per100 font-white radius4 ht88 font30 bg-f67657 per70 mt90">下一步</button>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $('.ht172').click(function(){
+        $(this).find('img:eq(1)').removeClass('display-n');
+        $(this).siblings('.ht172').find('img:eq(1)').addClass('display-n');
+    });
+</script>
+</html>

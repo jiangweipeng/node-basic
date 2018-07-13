@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+    <title>考勤统计</title>
+    <link rel="stylesheet" href="css/phone_rem.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/jquery.circliful.css">
+    <script src="js/height.js"></script>
+    <script src="js/jQuery.1.8.2.min.js"></script>
+    <script src="js/jquery.circliful.min.js"></script>
+    <style>
+        .active{
+            background: #f67657;
+        }
+        .circle-text{
+            line-height: 2.1rem !important;
+            font-weight: bold;
+            font-size: 0.5rem !important;
+        }
+        .circle-info{
+            line-height: 3.2rem !important;
+        }
+        canvas,#attendance{
+            width: 2.5rem !important;
+            height: 2.5rem !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col12">
+                <div class="ht86 border-b-f5f5f5 tc display-flex">
+                    <select class="font28">
+                        <option>小二班</option>
+                    </select>
+                    <img src="icons/down.png" class="w22 ht16 ml10" alt=""/>
+                </div>
+                <div class="display-flex mt40">
+                    <div class="w116 ht52 tc l-ht52 radius52 bg-e5e2e5 font-white font24 mr60">今日</div>
+                    <div class="w116 ht52 tc l-ht52 radius52 font-white font24 mr60 active">本月</div>
+                    <div class="w116 ht52 tc l-ht52 radius52 bg-e5e2e5 font-white font24">上月</div>
+                </div>
+                <div class="display-flex mt50">
+                    <div class="font22" id="attendance" data-text="98%" data-info="正常出勤" data-percent="50" data-fgcolor="#f67657" data-bgcolor="#e5e2e5" data-fill="#fff"></div>
+                </div>
+                <div class="display-flex font24 mt40 mb50">
+                    <div class="ht20 w20 radius4 bg-f67657 mr10"></div>正常
+                    <div class="ht20 w20 radius4 bg-e5e2e5 mr10 ml80"></div>请假
+                </div>
+                <div class="ht20 bg-fafafa"></div>
+                <div class="pl30 pr30">
+                    <div class="ht100 l-ht100 border-b-f5f5f5 font30 font-b">
+                        请假次数
+                    </div>
+                    <ul class="overflow-h">
+                        <li class="ht90 display-flex border-b-f5f5f5 overflow-h">
+                            <div class="font22 overflow-h mt6">
+                                <div class="w48 ht48 radius-circle display-ib vertical-a-m">
+                                    <img src="img/tx.png" class="per100 ht100p coverImg mr14" alt=""/>
+                                </div>
+                                <div class="display-ib"></div>张小双
+                            </div>
+                            <div class="flex1 overflow-h pr70 ht90 pl24 pt38">
+                                <div class="ht14 bg-fff1c8 pos-r per50 lenVal">
+                                    <div class="font20 font-959595 pos-a" style="right: -0.5rem;top: -0.1rem;"><span class="num">6</span>次</div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="ht90 display-flex border-b-f5f5f5 overflow-h">
+                            <div class="font22 overflow-h mt6">
+                                <div class="w48 ht48 radius-circle display-ib vertical-a-m">
+                                    <img src="img/tx.png" class="per100 ht100p coverImg mr14" alt=""/>
+                                </div>
+                                <div class="display-ib"></div>张小双
+                            </div>
+                            <div class="flex1 overflow-h pr70 ht90 pl24 pt38">
+                                <div class="ht14 bg-fff1c8 pos-r per50 lenVal">
+                                    <div class="font20 font-959595 pos-a" style="right: -0.5rem;top: -0.1rem;"><span class="num">1</span>次</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    /*圆形统计图*/
+    $('#attendance').circliful();
+    var percentVal = $('#attendance').attr('data-percent');
+    $('.circle-text').text(percentVal+'%');/*赋值*/
+
+    /*进度*/
+    $('ul li').each(function(){
+        var numText = $(this).find('.num').text();
+        var percent = numText * 10;
+        $(this).find('.lenVal').css('width',percent+'%');
+    });
+</script>
+</html>
